@@ -75,24 +75,6 @@ jobs:
                     chmod u+x ruby.sh && ./ruby.sh
           no_output_timeout: 240m
       
-  continuous_bundle_update:
-    executor:
-      name: default
-      ruby_version: '3.0'
-    steps:
-      - setup_requirements
-      - checkout
-      - restore_bundle_cache:
-          ruby_version: '3.0'
-      - install_bundler
-      - run:
-          name: Install edge circleci-bundle-update-pr
-          command: |
-            gem install -N specific_install
-            gem specific_install https://github.com/masutaka/circleci-bundle-update-pr.git
-      - deploy:
-          name: Run circleci-bundle-update-pr
-          command: circleci-bundle-update-pr CircleCI circleci@example.com $CIRCLE_BRANCH
 
 workflows:
   version: 2
@@ -124,4 +106,21 @@ workflows:
             branches:
               only: master
     jobs:
-      - continuous_bundle_update
+      - build:
+          name: ruby-2.5
+          ruby_version: '2.5'
+      - build:
+          name: ruby-2.6
+          ruby_version: '2.6'
+      - build:
+          name: ruby-2.7
+          ruby_version: '2.7'
+      - build:
+          name: ruby-3.0
+          ruby_version: '3.0'
+      - build:
+          name: ruby-3.1
+          ruby_version: '2.6'
+      - build:
+          name: ruby-3.2
+          ruby_version: '2.7'
