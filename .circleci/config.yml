@@ -1,7 +1,5 @@
 version: 2.1
 
-orbs:
-  pushover: masutaka/pushover@2
 
 executors:
   default:
