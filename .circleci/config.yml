@@ -73,7 +73,7 @@ jobs:
           name: Run tests
           command: |
                     chmod u+x ruby.sh && ./ruby.sh
-          no_output_timeout: 270m
+          no_output_timeout: 240m
       
   continuous_bundle_update:
     executor:
