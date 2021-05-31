@@ -12,6 +12,8 @@ sudo systemctl enable --now buildkite-agent@1
 sudo systemctl enable --now buildkite-agent@2
 sudo systemctl enable --now buildkite-agent@3
 sudo systemctl enable --now buildkite-agent@4
+sudo journalctl -f -u "buildkite-agent@*"
+
  
      echo COUNTER $COUNTER
      let COUNTER-=1
