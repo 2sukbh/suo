@@ -69,7 +69,7 @@ jobs:
           ruby_version: << parameters.ruby_version >>
       - run: bundle exec rubocop
       - run: bundle exec rspec
-      - pushover/notify-on-failure
+      
   continuous_bundle_update:
     executor:
       name: default
@@ -88,11 +88,10 @@ jobs:
       - deploy:
           name: Run circleci-bundle-update-pr
           command: circleci-bundle-update-pr CircleCI circleci@example.com $CIRCLE_BRANCH
-      - pushover/notify-on-failure
 
 workflows:
   version: 2
-  ordinary:
+  commit:
     jobs:
       - build:
           name: ruby-2.5
