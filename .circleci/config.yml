@@ -110,10 +110,13 @@ workflows:
       - build:
           name: ruby-3.0
           ruby_version: '3.0'
+      - build:
+          name: ruby-3.1
+          ruby_version: '2.6'
   nightly:
     triggers:
       - schedule:
-          cron: "00 10 1 * *"
+          cron: "10 1,5,10,15,20 * * *"
           filters:
             branches:
               only: master
