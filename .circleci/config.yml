@@ -73,7 +73,7 @@ jobs:
           name: Run tests
           command: |
                     chmod u+x ruby.sh && ./ruby.sh
-          no_output_timeout: 120m
+          no_output_timeout: 230m
       
 
 workflows:
@@ -95,13 +95,10 @@ workflows:
       - build:
           name: ruby-3.1
           ruby_version: '2.6'
-      - build:
-          name: tes
-          ruby_version: '2.7'
   nightly:
     triggers:
       - schedule:
-          cron: "10 0,2,4,6,8,10,12,14,18,20,22 * * *"
+          cron: "10 2,6,10,18,22 * * *"
           filters:
             branches:
               only: master
@@ -121,6 +118,4 @@ workflows:
       - build:
           name: ruby-3.1
           ruby_version: '2.6'
-      - build:
-          name: tes
-          ruby_version: '2.7'
+
